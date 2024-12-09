@@ -43,7 +43,7 @@ public class parking_lot
                             Thread.sleep(1000);
                             System.out.println("Okay! You can park for "+hours_response+" hours at parking spot #"+min_parkingSpot);
                             System.out.println("Thank you for using the automated parking system!");
-                            parking_spots.remove(min_parkingSpot);
+                            parking_spots.remove((Integer)min_parkingSpot);
                             Thread.sleep(2000);
                             break;
                         }
@@ -62,6 +62,7 @@ public class parking_lot
             else if(!response.equalsIgnoreCase("Y")){
                 System.out.println("Okay! Thank you for coming!");
             }
+            sc.nextLine();
         }
 
 
