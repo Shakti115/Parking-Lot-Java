@@ -1,7 +1,7 @@
-import java.util.Random;
-import java.util.Scanner;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
+import java.util.Scanner;
 
 public class parking_lot
 {
@@ -18,7 +18,7 @@ public class parking_lot
             a = a+1;
         }
         
-        int length = parking_spots.size();
+        
 
         ArrayList<Double> parking_hours = new ArrayList<>();
 
@@ -31,16 +31,17 @@ public class parking_lot
             if (response.equalsIgnoreCase("Y")){
                 Thread.sleep(1000);
                 if (!parking_spots.isEmpty()){
+                    int length = parking_spots.size();
                     System.out.println("Hello, we have "+length+" parking spots: "+parking_spots);
                     int b = 1;
                     while(b==1){
                         System.out.println("For how long do you want to park? The maximum duration is 12 hours and the minimum is 0.5 hours."); 
                         Double hours_response = sc.nextDouble();
-                        if (hours_response > 0.5 && hours_response < 12){
+                        if (hours_response >= 0.5 && hours_response <= 12){
                             int min_parkingSpot = Collections.min(parking_spots);
                             parking_hours.add(hours_response);
                             Thread.sleep(1000);
-                            System.out.println("Okay! You can park for"+hours_response+"hours at parking spot #"+min_parkingSpot);
+                            System.out.println("Okay! You can park for "+hours_response+" hours at parking spot #"+min_parkingSpot);
                             System.out.println("Thank you for using the automated parking system!");
                             parking_spots.remove(min_parkingSpot);
                             Thread.sleep(2000);
@@ -58,7 +59,7 @@ public class parking_lot
                     System.out.println("A spot will be available in "+min_parkingHours+" hours, please come back then or reserve your spot now!");
                 }
             }
-            else{
+            else if(!response.equalsIgnoreCase("Y")){
                 System.out.println("Okay! Thank you for coming!");
             }
         }
